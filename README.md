@@ -18,7 +18,7 @@ The table generation should be in a separate class, the definition of the "rules
 THE NUMBER OF MOVES CAN BE ARBITRARY (odd and > 1, depending on the passed parameters), it is not hardwired into the code. 
 Example:
 
->java -jar game.jar rock paper scissors lizard Spock
+java -jar game.jar rock paper scissors lizard Spock
 HMAC: FAAC40C71B4B12BF0EF5556EEB7C06925D5AE405D447E006BB8A06565338D411
 Available moves:
 1 - rock
@@ -33,12 +33,7 @@ Your move: paper
 Computer move: rock
 You win!
 HMAC key: BD9BE48334BB9C5EC263953DA54727F707E95544739FCE7359C267E734E380A2
-To submit the solution  you need to send to p.lebedev@itransition.com:
-1) a link to a video demonstrating launch with 3 and 7 parameters, launch with incorrect parameters (repeated or even number, one or no), help table generation (on 5 parameters), choice of the user move, output of results;
-2) source code link to github.
-And as an explanation: when calculating HMAC, the key is the same secret key that you generated. And the message is a move string. After own move the user obtains a key and the computer's move& And the user will be able to calculate the HMAC and compare with the HMAC that was shown before the user's move. It's not very difficult 🙂
 
-A common mistake is trying to invent your "HMAC" as a hash of a random "key". This will not work. If you show the same lines before the move and after the move, the user does not receive new information after the move and, accordingly, you do not prove anything to him. It is necessary to generate a key (with a secure generator), make a computer move, calculate HMAC (by a standard algorithm) from a computer move (message) and a key (key), show HMAC, get a user move, show a key. Re-read this paragraph until the total comprehension.
 --------
 
 The steps of the script:
